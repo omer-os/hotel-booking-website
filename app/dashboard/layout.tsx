@@ -1,5 +1,4 @@
-import { ClerkProvider } from "@clerk/nextjs/app-beta";
-import "../styles/globals.css";
+import DashboardMainLayout from "components/components/screens/layouts/DashboardMainLayout";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +13,7 @@ export default function RootLayout({
   return (
     <html data-theme="light" lang="en">
       <body className="bg-base-200">
-        <ClerkProvider>{children}</ClerkProvider>
+        <DashboardMainLayout>{children}</DashboardMainLayout>
       </body>
     </html>
   );
