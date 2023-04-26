@@ -1,4 +1,11 @@
 import "../styles/globals.css";
+import { Roboto } from "next/font/google";
+
+export const roboto = Roboto({
+  display: "auto",
+  weight: "300",
+  subsets: ["latin"],
+});
 
 export default function RootLayout({
   children,
@@ -8,7 +15,7 @@ export default function RootLayout({
   return (
     <>
       <html data-theme="light" lang="en">
-        <body>{children}</body>
+        <body className={roboto.className}>{children}</body>
       </html>
     </>
   );

@@ -7,8 +7,8 @@ import React, { useState } from "react";
 import { BsFilter } from "react-icons/bs";
 
 const bookedDates = [
-  new Date(2023, 3, 27),
-  new Date(2023, 3, 30),
+  new Date(5, 5, 2023),
+  new Date(2023, 3, 31),
   new Date(2023, 4, 30),
 ];
 const bookedStyle = { border: "2px solid currentColor" };
@@ -29,7 +29,7 @@ export default function SecondSection() {
   return (
     <div className="flex flex-col mt-10">
       <div className="flex justify-between flex-1">
-        <div className="text-2xl font-bold">Overview</div>
+        <div className="text-2xl font-bold">Reservations Dates</div>
         {/* <button className="btn btn-outline gap-2 btn-primary">
           <BsFilter />
           filters
