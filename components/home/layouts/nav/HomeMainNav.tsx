@@ -37,10 +37,10 @@ export default function HomeMainNav() {
         scroll > 0.1 ? "bg-white !shadow-md" : ""
       }`}
     >
-      <nav className="max-w-7xl justify-between items-center md:py-3 transition-all md:px-6 px-5 relative z-50 mx-auto w-full">
-        <div className="text-xl font-bold">Hotell</div>
+      <nav className="max-w-7xl items-center md:py-3 transition-all md:px-6 px-5 relative z-50 mx-auto w-full">
+        <div className="text-xl font-bold md:flex-none flex-1">Hotell</div>
 
-        <div className="md:flex hidden capitalize gap-3">
+        <div className="md:flex justify-center ml-[6em] flex-1 hidden capitalize gap-3">
           {urls.map((url) => (
             <Link
               key={url.name}

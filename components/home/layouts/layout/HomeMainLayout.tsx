@@ -9,7 +9,7 @@ export default function HomeMainLayout({
   return (
     <div>
       <HomeMainNav />
-      <div className="max-w-7xl px-6 mx-auto w-full">{children}</div>
+      <div className="max-w-7xl px-6 pb-24 mx-auto w-full">{children}</div>
     </div>
   );
 }

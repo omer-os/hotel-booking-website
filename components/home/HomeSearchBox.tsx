@@ -1,60 +1,34 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import HomeDateInput from "../ui/inputs/HomeDateInput";
+import HomeGuestsInput from "../ui/inputs/HomeGuestsInput";
 
 export default function HomeSearchBox() {
+  const [CheckIn, setCheckIn] = useState(new Date());
+  const [CheckOut, setCheckOut] = useState(new Date());
+
+  const [ReservationDetails, setReservationDetails] = useState({
+    Adults: 1,
+    Children: 0,
+    Rooms: 1,
+  });
+
   return (
-    <div className="section sec-form-search py-0 bg-light">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="form row aos-init aos-animate" data-aos="fade-up">
-              <div className="col-lg-3">
-                <div className="input-icon-wrap">
-                  <span className="icon-calendar"></span>
-                  <input
-                    type="text"
-                    className="form-control flatpickr-input"
-                    id="arrival"
-                    placeholder="Date Arrival"
-                  />
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div className="input-icon-wrap">
-                  <span className="icon-calendar"></span>
-                  <input
-                    type="text"
-                    className="form-control flatpickr-input"
-                    id="departure"
-                    placeholder="Date Departure"
-                  />
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div className="input-icon-wrap">
-                  <span className="icon-person"></span>
-                  <select
-                    name=""
-                    id="number-of-person"
-                    className="form-control"
-                  >
-                    <option value=""># of Person</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5+</option>
-                  </select>
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <button className="btn btn-primary btn-block w-100">
-                  Find now <span className=""></span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="bg-white p-[2.5em] lg:flex-row flex-col flex gap-4 shadow-xl md:max-w-10/12 mx-auto -top-10 z-20 relative transition-all w-full">
+      <HomeDateInput label="check in" State={CheckIn} setState={setCheckIn} />
+      <HomeDateInput
+        label="check out"
+        State={CheckOut}
+        setState={setCheckOut}
+      />
+      <HomeGuestsInput
+        State={ReservationDetails}
+        setState={setReservationDetails}
+      />
+
+      <button className="rounded-full bg-red-500 text-white py-4 transition-all px-6 capitalize flex-1 items-center active:scale-90 ">
+        search
+      </button>
     </div>
   );
 }

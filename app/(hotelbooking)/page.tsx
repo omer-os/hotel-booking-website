@@ -1,4 +1,5 @@
 import HomeSearchBox from "components/components/home/HomeSearchBox";
+import HomeSec2 from "components/components/home/HomeSec2";
 import React from "react";
 
 export default function page() {
@@ -22,8 +23,10 @@ export default function page() {
           </button>
         </div>
       </div>
-
+      <div className="h-[90vh]" />
       <HomeSearchBox />
+
+      <HomeSec2 />
     </div>
   );
 }

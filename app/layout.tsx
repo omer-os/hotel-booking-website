@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <>
       <html data-theme="light" lang="en">
-        <body className={roboto.className}>{children}</body>
+        <body className={roboto.className + "pb-10"}>{children}</body>
       </html>
     </>
   );
