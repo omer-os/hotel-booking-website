@@ -15,7 +15,7 @@ export default function HomeGuestsInput({
   };
   setState: any;
 }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="flex-1 relative ">
@@ -28,8 +28,14 @@ export default function HomeGuestsInput({
         }}
       >
         <DropdownMenu.Trigger asChild>
-          <button className="rounded-full bg-[#F0B679]/20 flex justify-between py-4 active:ring-2 ring-red-500 transition-all px-6 capitalize w-full items-center text-zinc-500">
-            details
+          <button className="rounded-full bg-[#F0B679]/20 flex justify-between py-4 active:ring-2 ring-red-500 transition-all px-6 w-full items-center text-zinc-500">
+            {State.Adults + State.Children > 0 && (
+              <div className="text-lg">
+                {State.Adults + State.Children} Guest
+                {State.Adults + State.Children > 1 ? "s" : ""} / {State.Rooms}{" "}
+                Room{State.Rooms > 1 ? "s" : ""}
+              </div>
+            )}
             <BsFillPersonFill />
           </button>
         </DropdownMenu.Trigger>
@@ -46,7 +52,7 @@ export default function HomeGuestsInput({
                 <DropdownMenu.Arrow className="fill-white " />
 
                 <div className="text-xl font-bold border-b pb-2 mb-2">
-                  Guests
+                  {State.Adults + State.Children} Guests
                 </div>
                 <div className="flex flex-col gap-3 py-3">
                   {[

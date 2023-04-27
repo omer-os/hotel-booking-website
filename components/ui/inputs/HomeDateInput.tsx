@@ -13,7 +13,7 @@ export default function HomeDateInput({
   setState,
 }: {
   label: string;
-  State: Date;
+  State: null | Date;
   setState: any;
 }) {
   const [open, setOpen] = useState(false);
@@ -29,8 +29,22 @@ export default function HomeDateInput({
         }}
       >
         <DropdownMenu.Trigger asChild>
-          <button className="rounded-full bg-[#F0B679]/20 flex justify-between py-4 active:ring-2 ring-red-500 transition-all px-6 items-center capitalize w-full text-zinc-500">
-            {label}
+          <button className="rounded-full bg-[#F0B679]/20 flex justify-between py-4 active:ring-2 ring-red-500 relative transition-all px-6 items-center capitalize w-full text-zinc-500">
+            {State &&
+              State.toLocaleDateString("en-US", {
+                weekday: "short",
+                day: "numeric",
+                month: "short",
+              })}
+            <motion.span
+              layout
+              className={`relative top-0 left-0 ${
+                State &&
+                "!absolute !text-red-600/50 transition-all -top-3 left-6"
+              } `}
+            >
+              {label}
+            </motion.span>
             <BsCalendar2Date />
           </button>
         </DropdownMenu.Trigger>
@@ -52,7 +66,10 @@ export default function HomeDateInput({
                     setState(day);
                     setOpen(false);
                   }}
-                  selected={State}
+                  selected={State || new Date()}
+                  modifiers={{
+                    selected: (day) => day.getTime() === State?.getTime(),
+                  }}
                 />
 
                 <DropdownMenu.Arrow className="fill-white " />

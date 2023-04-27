@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import HomeDateInput from "../ui/inputs/HomeDateInput";
 import HomeGuestsInput from "../ui/inputs/HomeGuestsInput";
+import Link from "next/link";
 
 export default function HomeSearchBox() {
-  const [CheckIn, setCheckIn] = useState(new Date());
-  const [CheckOut, setCheckOut] = useState(new Date());
+  const [CheckIn, setCheckIn] = useState<null | Date>(null);
+  const [CheckOut, setCheckOut] = useState<null | Date>(null);
 
   const [ReservationDetails, setReservationDetails] = useState({
     Adults: 1,
@@ -26,9 +27,16 @@ export default function HomeSearchBox() {
         setState={setReservationDetails}
       />
 
-      <button className="rounded-full bg-red-500 text-white py-4 transition-all px-6 capitalize flex-1 items-center active:scale-90 ">
+      <Link
+        href={`/hotels?checkIn=${CheckIn?.toISOString()}&checkOut=${CheckOut?.toISOString()}&adults=${
+          ReservationDetails.Adults
+        }&children=${ReservationDetails.Children}&rooms=${
+          ReservationDetails.Rooms
+        }`}
+        className="rounded-full bg-red-500 text-white py-4 transition-all px-6 capitalize flex-1 items-center active:scale-90 text-center"
+      >
         search
-      </button>
+      </Link>
     </div>
   );
 }
