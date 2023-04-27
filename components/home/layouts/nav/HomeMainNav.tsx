@@ -6,18 +6,21 @@ import { RiMenu3Line } from "react-icons/ri";
 import { IoCloseOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useUser, useAuth } from "@clerk/nextjs";
 
 const urls = [
   { name: "home", url: "/" },
   { name: "services", url: "/services" },
-  { name: "about", url: "/about" },
   { name: "contact", url: "/contact" },
+  { name: "signin", url: "/signin" },
 ];
 
 export default function HomeMainNav() {
   const pathname = usePathname();
   const [scroll, setScroll] = useState(0);
   const [OpenSideBar, setOpenSideBar] = useState(false);
+  const user = useUser();
+  const { signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,11 +57,48 @@ export default function HomeMainNav() {
           ))}
         </div>
 
-        <div className="md:flex hidden items-center gap-3">
-          <div className="w-10 h-10 flex items-center justify-center border border-black rounded-full">
-            <BsTelephoneFill />
+        <div className="flex gap-2">
+          <div className="md:flex hidden items-center gap-3">
+            <div className="w-10 h-10 flex items-center justify-center border border-black rounded-full">
+              <BsTelephoneFill />
+            </div>
+            123-489-9381
           </div>
-          123-489-9381
+
+          <div>
+            {user && (
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user.user?.profileImageUrl} />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <Link href="/admin" className="justify-between">
+                      See Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/admin/dashboard">Your Dashboard</Link>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() => {
+                        signOut();
+                        window.location.href = "/";
+                      }}
+                    >
+                      Sign Out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
 
         <button
@@ -79,12 +119,9 @@ export default function HomeMainNav() {
       </nav>
 
       <div
-        className={`fixed bg-white h-full 
-      top-0 -left-full w-full
-transition-all p-6 flex flex-col pt-24
-
-      ${OpenSideBar ? "left-0" : ""}
-      `}
+        className={`fixed bg-white h-full top-0 -left-full w-full transition-all p-6 flex flex-col pt-24 ${
+          OpenSideBar ? "left-0" : ""
+        }`}
       >
         {urls.map((url) => (
           <Link

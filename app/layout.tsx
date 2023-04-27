@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import { Roboto } from "next/font/google";
 
 export const roboto = Roboto({
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <>
       <html data-theme="light" lang="en">
-        <body className={roboto.className + "pb-10"}>{children}</body>
+        <ClerkProvider>
+          <body className={roboto.className + "pb-10"}>{children}</body>
+        </ClerkProvider>
       </html>
     </>
   );
