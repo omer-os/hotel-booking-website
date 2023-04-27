@@ -4,6 +4,9 @@ dependencies:
   '@clerk/nextjs':
     specifier: ^4.16.4
     version: 4.16.4(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)
+  '@prisma/client':
+    specifier: 4.13.0
+    version: 4.13.0(prisma@4.13.0)
   '@radix-ui/react-dropdown-menu':
     specifier: ^2.0.4
     version: 2.0.4(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0)
@@ -34,6 +37,9 @@ dependencies:
   postcss:
     specifier: 8.4.23
     version: 8.4.23
+  prisma:
+    specifier: ^4.13.0
+    version: 4.13.0
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -337,6 +343,29 @@ packages:
       pvtsutils: 1.3.2
       tslib: 2.5.0
       webcrypto-core: 1.7.7
+    dev: false
+
+  /@prisma/client@4.13.0(prisma@4.13.0):
+    resolution: {integrity: sha512-YaiiICcRB2hatxsbnfB66uWXjcRw3jsZdlAVxmx0cFcTc/Ad/sKdHCcWSnqyDX47vAewkjRFwiLwrOUjswVvmA==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+      prisma: 4.13.0
+    dev: false
+
+  /@prisma/engines-version@4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a:
+    resolution: {integrity: sha512-fsQlbkhPJf08JOzKoyoD9atdUijuGBekwoOPZC3YOygXEml1MTtgXVpnUNchQlRSY82OQ6pSGQ9PxUe4arcSLQ==}
+    dev: false
+
+  /@prisma/engines@4.13.0:
+    resolution: {integrity: sha512-HrniowHRZXHuGT9XRgoXEaP2gJLXM5RMoItaY2PkjvuZ+iHc0Zjbm/302MB8YsPdWozAPHHn+jpFEcEn71OgPw==}
+    requiresBuild: true
     dev: false
 
   /@radix-ui/primitive@1.0.0:
@@ -1454,6 +1483,15 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
+
+  /prisma@4.13.0:
+    resolution: {integrity: sha512-L9mqjnSmvWIRCYJ9mQkwCtj4+JDYYTdhoyo8hlsHNDXaZLh/b4hR0IoKIBbTKxZuyHQzLopb/+0Rvb69uGV7uA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.13.0
     dev: false
 
   /pvtsutils@1.3.2:
